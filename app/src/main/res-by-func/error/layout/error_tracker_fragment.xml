@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="action"
+            type="com.apcc.emma.ui.error.Action" />
+        <variable
+            name="viewModel"
+            type="com.apcc.emma.ui.error.ErrorTrackerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.error.ErrorTrackerFragment">
+
+        <ScrollView
+            android:id="@+id/scvScroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnDone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_small"
+                android:orientation="vertical">
+
+                <!--make it for user report bugs-->
+                <com.apcc.view.XTextView
+                    android:id="@+id/txtSystemRequest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/msg_crashSystemRequest"/>
+
+                <com.apcc.view.XEditText
+                    android:id="@+id/edtComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="5"
+                    android:hint="@string/lbl_description"
+                    android:gravity="start|top"
+                    android:imeOptions="actionDone"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_large"/>
+
+                <!-- show it when debug-->
+
+                <TextView
+                    android:id="@+id/txtErrorContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.errorMsg}"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="@{viewModel.isHideContent?View.GONE:View.VISIBLE}"
+                    android:textIsSelectable="true"/>
+            </LinearLayout>
+        </ScrollView>
+        <com.apcc.view.XButton
+            android:id="@+id/btnDone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnPrintLog"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scvScroll"
+            android:onClick="@{()->action.sendReport()}"
+            android:text="@string/lbl_sendToUs" />
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnPrintLog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg_selected"
+            app:layout_constraintStart_toEndOf="@+id/btnDone"
+            app:layout_constraintEnd_toStartOf="@+id/btnBackToApp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scvScroll"
+            android:onClick="@{()->action.printDebugLog()}"
+            android:visibility="@{viewModel.isHideContent?View.GONE:View.VISIBLE}"
+            android:text="@string/lbl_printLog" />
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnBackToApp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/btnPrintLog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scvScroll"
+            android:onClick="@{()->action.backToApp()}"
+            android:text="@string/lbl_backToApp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

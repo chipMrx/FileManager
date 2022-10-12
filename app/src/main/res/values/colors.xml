@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f47c20</color>
+    <color name="colorPrimaryLight">#FFC9A0</color>
+    <color name="colorPrimaryDark">#9e3c21</color>
+    <color name="colorAccent">#B60144</color>
+
+    <color name="colorHint">#BABABA</color>
+    <color name="colorNormal">#5A5A5A</color>
+    <color name="colorSuccess">#4CAF50</color>
+    <color name="colorImportant">#2196F3</color>
+    <color name="colorDisable">#BABABA</color>
+
+    <color name="colorInputBgActive">#A6FFA9</color>
+    <color name="colorInputStrokeActive">#33115081</color>
+
+    <color name="colorDangerousBorder">#EC3C3C</color>
+    <color name="colorDangerousFill">#FFE7E7</color>
+
+    <color name="colorNormalBorder">#f47c20</color>
+    <color name="colorNormalFill">#FFF2E9</color>
+
+    <color name="colorSuccessBorder">#00FF0A</color>
+    <color name="colorSuccessFill">#F3FFF3</color>
+
+    <color name="colorSelectedBorder">#4962FF</color>
+    <color name="colorSelectedFill">#EAEFFF</color>
+
+    <color name="colorDisableBorder">#C5C5C5</color>
+    <color name="colorDisableFill">#F3F3F3</color>
+
+    <color name="app_bg">#F6F6F6</color>
+    <color name="app_bgDark">#000000</color>
+    <color name="dialog_bg">#4CAF50</color>
+    <color name="alert_bg">#009688</color>
+
+    <color name="toastSuccess">#B8FFBA</color>
+    <color name="toastWarning">#FFD4B3</color>
+    <color name="toastError">#FFADAD</color>
+    <color name="toastInfo">#AFDCFF</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="white_overlay">#66ffffff</color>
+
+    <color name="black_overlay">#1A000000</color>
+    <color name="black_overlayLight">#10000000</color>
+    <color name="colorPrimary_overlay">#50061913</color>
+    <color name="color_loadView">#A6A6A6</color>
+    <color name="color_loading">#60ffffff</color>
+    <color name="gray">#d6d6d6</color>
+    <color name="gray_dark">#808080</color>
+    <color name="light_gray">#e6e6e6</color>
+</resources>

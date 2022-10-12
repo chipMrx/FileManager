@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="action"
+            type="com.apcc.emma.ui.file.detail.Action" />
+
+        <variable
+            name="viewModel"
+            type="com.apcc.emma.ui.file.detail.FileDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_small"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.apcc.view.XIcon
+            android:id="@+id/icLogo"
+            android:layout_width="@dimen/imageBig"
+            android:layout_height="@dimen/imageBig"
+            android:src="@drawable/ic_doc"
+            app:layout_constraintBottom_toTopOf="@+id/barrierContent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{(!TextUtils.isEmpty(viewModel.errorMsg) || !viewModel.fileJustLogo)?View.GONE:View.VISIBLE}"/>
+
+        <com.apcc.view.XImage
+            android:id="@+id/imvContent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:imagePath="@{viewModel.fileImageContent}"
+            app:layout_constraintBottom_toTopOf="@+id/barrierContent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{(!TextUtils.isEmpty(viewModel.errorMsg) || TextUtils.isEmpty(viewModel.fileImageContent))?View.GONE:View.VISIBLE}"/>
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtContent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/barrierContent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{viewModel.fileContent}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{(!TextUtils.isEmpty(viewModel.errorMsg) || TextUtils.isEmpty(viewModel.fileContent))?View.GONE:View.VISIBLE}"/>
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtError"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@{viewModel.errorMsg}"
+            app:layout_constraintBottom_toTopOf="@+id/barrierContent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textType="normal_accent"
+            android:visibility="@{TextUtils.isEmpty(viewModel.errorMsg)?View.GONE:View.VISIBLE}"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierContent"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="txtPath"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <!--
+            android:visibility="@{TextUtils.isEmpty(viewModel.errorMsg)?View.VISIBLE:View.GONE}"-->
+        <com.apcc.view.XTextView
+            android:id="@+id/txtPath"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:gravity="center_vertical"
+            android:text="@{viewModel.filePath}"
+            app:layout_constraintBottom_toTopOf="@+id/txtModifiedDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtModifiedDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="@{viewModel.fileDate}"
+            tools:text="Date modifier: 17/06/2022 11:40"
+            android:visibility="@{TextUtils.isEmpty(viewModel.fileDate)?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="5"
+            android:text="@{viewModel.fileDescription}"
+            tools:text="Description: nothings"
+            android:visibility="@{TextUtils.isEmpty(viewModel.fileDescription)?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.apcc.view.XButton
+            android:text="@string/lbl_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{()->action.editFile()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,361 @@
+viewModel.resultsSaveLanguage.observe(viewLifecycleOwner, { response->
+            if (viewModel.handlerSaveLanguage(response))
+                viewModel.saveLanguage()
+        })
+		
+		
+		
+		private var currentInt = 0
+    private val languages = ArrayList<Language>()
+    fun saveLanguage(index:Int = currentInt + 1){
+        if (languages.isNotEmpty() && index < languages.size){
+            currentInt = index
+            _requestSaveLanguage.value = CommonRequest().apply {
+                language = languages[index]
+            }
+        }
+    }
+	
+	
+	
+	
+    fun handlerSaveLanguage(response:Resource<BaseResponse>):Boolean{
+        isWaiting.value = response.status == Status.LOADING
+        when(response.status){
+            Status.SUCCESS ,
+            Status.ERROR -> {
+                return true
+            }
+            Status.LOADING ->{
+                // do nothings
+            }
+        }
+        return false
+    }
+
+    
+	
+	
+	private val _requestSaveLanguage = MutableLiveData<CommonRequest>()
+    val resultsSaveLanguage: LiveData<Resource<CommonResponse>> = _requestSaveLanguage.switchMap { request ->
+        commonRepository.saveLanguage(request)
+    }
+
+
+fun initLanguage(){
+        languages.clear()
+        languages.add(Language(	"Northwest Caucasian",	"Abkhazian",	"аҧсуа бызшәа, аҧсшәа", "ab",	"abk",	"abk",	"abk",
+            "also known as Abkhaz", "" ))
+
+        languages.add(Language(	"Afro-Asiatic","Afar","Afaraf","aa","aar","aar","aar","",""))
+        languages.add(Language(	"Indo-European","Afrikaans","Afrikaans","af","afr","afr","afr",
+            "", "https://github.com/tesseract-ocr/tessdata/raw/master/afr.traineddata"))
+        languages.add(Language(	"Niger–Congo","Akan","Akan","ak","aka","aka","aka + 2",
+            "macrolanguage, Twi is tw/twi, Fanti is fat",""))
+        languages.add(Language(	"Indo-European","Albanian","Shqip","sq","sqi","alb","sqi + 4",
+            "macrolanguage, Albanian Phylozone in 639-6","https://github.com/tesseract-ocr/tessdata/raw/master/sqi.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Amharic","አማርኛ","am","amh","amh","amh",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/amh.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Arabic","العربية","ar","ara","ara","ara + 29",
+            "macrolanguage, Standard Arabic is arb","https://github.com/tesseract-ocr/tessdata/raw/master/ara.traineddata"))
+        languages.add(Language(	"Indo-European","Aragonese","aragonés","an","arg","arg","arg","",""))
+        languages.add(Language(	"Indo-European","Armenian","Հայերեն","hy","hye","arm","hye",
+            "also known as Հայերէն; ISO 639-3 code hye is for Eastern Armenian, hyw is for Western Armenian, and xcl is for Classical Armenian","https://github.com/tesseract-ocr/tessdata/raw/master/hye.traineddata"))
+        languages.add(Language(	"Indo-European","Assamese","অসমীয়া","as","asm","asm","asm",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/asm.traineddata"))
+        languages.add(Language(	"Northeast Caucasian","Avaric","авар мацӀ, магӀарул мацӀ","av","ava","ava","ava",
+            "also known as Avar",""))
+        languages.add(Language(	"Indo-European","Avestan","avesta","ae","ave","ave","ave",
+            "ancient",""))
+        languages.add(Language(	"Aymaran","Aymara","aymar aru","ay","aym","aym","aym + 2",
+            "macrolanguage",""))
+        languages.add(Language(	"Turkic","Azerbaijani","azərbaycan dili, تۆرکجه","az","aze","aze","aze + 2",
+            "macrolanguage also known as Azeri","https://github.com/tesseract-ocr/tessdata/raw/master/aze.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/aze_cyrl.traineddata"))
+        languages.add(Language(	"Niger–Congo","Bambara","bamanankan","bm","bam","bam","bam","",""))
+        languages.add(Language(	"Turkic","Bashkir","башҡорт теле","ba","bak","bak","bak","",""))
+        languages.add(Language(	"Language isolate","Basque","euskara, euskera","eu","eus","baq","eus",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/eus.traineddata"))
+        languages.add(Language(	"Indo-European","Belarusian","беларуская мова","be","bel","bel","bel",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/bel.traineddata"))
+        languages.add(Language(	"Indo-European","Bengali","বাংলা","bn","ben","ben","ben",
+            "also known as Bangla","https://github.com/tesseract-ocr/tessdata/raw/master/ben.traineddata"))
+        languages.add(Language(	"Indo-European","Bihari languages","भोजपुरी","bh","bih","bih","",
+            "collective language code for Bhojpuri, Magahi, and Maithili",""))
+        languages.add(Language(	"Creole","Bislama","Bislama","bi","bis","bis","bis",
+            "Language formed from English and Ni-Vanuatu, with some French influence.",""))
+        languages.add(Language(	"Indo-European","Bosnian","bosanski jezik","bs","bos","bos","bos",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/bos.traineddata"))
+        languages.add(Language(	"Indo-European","Breton","brezhoneg","br","bre","bre","bre",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/bre.traineddata"))
+        languages.add(Language(	"Indo-European","Bulgarian","български език","bg","bul","bul","bul",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/bul.traineddata"))
+        languages.add(Language(	"Sino-Tibetan","Burmese","ဗမာစာ","my","mya","bur","mya",
+            "also known as Myanmar","https://github.com/tesseract-ocr/tessdata/raw/master/mya.traineddata"))
+        languages.add(Language(	"Indo-European","Catalan, Valencian","català, valencià","ca","cat","cat","cat",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/cat.traineddata"))
+        languages.add(Language(	"Austroasiatic","Central Khmer","ខ្មែរ, ខេមរភាសា, ភាសាខ្មែរ","km","khm","khm","khm",
+            "also known as Khmer or Cambodian","https://github.com/tesseract-ocr/tessdata/raw/master/khm.traineddata"))
+        languages.add(Language(	"Austronesian","Chamorro","Chamoru","ch","cha","cha","cha","",""))
+        languages.add(Language(	"Northeast Caucasian","Chechen","нохчийн мотт","ce","che","che","che","",""))
+        languages.add(Language(	"Iroquois ","Cherokee","ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ","","chr","chr","chr",
+            "ISO 15924 Cher, 445 , ​Cherokee","https://github.com/tesseract-ocr/tessdata/raw/master/chr.traineddata"))
+        languages.add(Language(	"Niger–Congo","Chichewa, Chewa, Nyanja","chiCheŵa, chinyanja","ny","nya","nya","nya","",""))
+        languages.add(Language(	"Sino-Tibetan","Chinese","中文 (Zhōngwén), 汉语, 漢語","zh","zho","chi","zho + 16",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/chi_sim.traineddata);https://github.com/tesseract-ocr/tessdata/raw/master/chi_sim_vert.traineddata);https://github.com/tesseract-ocr/tessdata/raw/master/chi_tra.traineddata);https://github.com/tesseract-ocr/tessdata/raw/master/chi_tra_vert.traineddata"))
+        languages.add(Language(	"Indo-European","Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic","ѩзыкъ словѣньскъ","cu","chu","chu","chu",
+            "ancient, in use by Orthodox Church",""))
+        languages.add(Language(	"Turkic","Chuvash","чӑваш чӗлхи","cv","chv","chv","chv","",""))
+        languages.add(Language(	"Indo-European","Cornish","Kernewek","kw","cor","cor","cor","",""))
+        languages.add(Language(	"Indo-European","Corsican","corsu, lingua corsa","co","cos","cos","cos",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/cos.traineddata"))
+        languages.add(Language(	"Algonquian","Cree","ᓀᐦᐃᔭᐍᐏᐣ","cr","cre","cre","cre + 6","macrolanguage",""))
+        languages.add(Language(	"Indo-European","Croatian","hrvatski jezik","hr","hrv","hrv","hrv",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/hrv.traineddata"))
+        languages.add(Language(	"Indo-European","Czech","čeština, český jazyk","cs","ces","cze","ces",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/ces.traineddata"))
+        languages.add(Language(	"Indo-European","Danish","dansk","da","dan","dan","dan",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/dan.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/dan_frak.traineddata"))
+        languages.add(Language(	"Indo-European","Divehi, Dhivehi, Maldivian","ދިވެހި","dv","div","div","div",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/div.traineddata"))
+        languages.add(Language(	"Indo-European","Dutch, Flemish","Nederlands, Vlaams","nl","nld","dut","nld",
+            "Flemish is not to be confused with the closely related West Flemish which is referred to as Vlaams (Dutch for \"Flemish\") in ISO 639-3 and has the ISO 639-3 code vls",
+            "https://github.com/tesseract-ocr/tessdata/raw/master/nld.traineddata"))
+        languages.add(Language(	"Sino-Tibetan","Dzongkha","རྫོང་ཁ","dz","dzo","dzo","dzo",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/dzo.traineddata"))
+        languages.add(Language(	"Indo-European","English","English","en","eng","eng","eng",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/enm.traineddata"))
+        languages.add(Language(	"Constructed","Esperanto","Esperanto","eo","epo","epo","epo",
+            "constructed, initiated from L.L. Zamenhof, 1887","https://github.com/tesseract-ocr/tessdata/raw/master/epo.traineddata"))
+        languages.add(Language(	"Uralic","Estonian","eesti, eesti keel","et","est","est","est + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/est.traineddata"))
+        languages.add(Language(	"Niger–Congo","Ewe","Eʋegbe","ee","ewe","ewe","ewe","",""))
+        languages.add(Language(	"Indo-European","Faroese","føroyskt","fo","fao","fao","fao",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/fao.traineddata"))
+        languages.add(Language(	"Austronesian","Fijian","vosa Vakaviti","fj","fij","fij","fij","",""))
+        languages.add(Language(	"Uralic","Finnish","suomi, suomen kieli","fi","fin","fin","fin",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/fin.traineddata"))
+        languages.add(Language(	"Indo-European","French","français, langue française","fr","fra","fre","fra",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/fra.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/frm.traineddata"))
+        languages.add(Language(	"Niger–Congo","Fulah","Fulfulde, Pulaar, Pular","ff","ful","ful","ful + 9",
+            "macrolanguage, also known as Fula",""))
+        languages.add(Language(	"Indo-European","Gaelic, Scottish Gaelic","Gàidhlig","gd","gla","gla","gla",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/gla.traineddata"))
+        languages.add(Language(	"Indo-European","Galician","Galego","gl","glg","glg","glg",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/glg.traineddata"))
+        languages.add(Language(	"Niger–Congo","Ganda","Luganda","lg","lug","lug","lug","",""))
+        languages.add(Language(	"Kartvelian","Georgian","ქართული","ka","kat","geo","kat",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/kat.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/kat_old.traineddata"))
+        languages.add(Language(	"Indo-European","German","Deutsch","de","deu","ger","deu",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/deu.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/deu_frak.traineddata"))
+        languages.add(Language(	"Indo-European","Greek, Modern (1453–)","ελληνικά","el","ell","gre","ell",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/ell.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/grc.traineddata"))
+        languages.add(Language(	"Tupian","Guarani","Avañe'ẽ","gn","grn","grn","grn + 5","macrolanguage",""))
+        languages.add(Language(	"Indo-European","Gujarati","ગુજરાતી","gu","guj","guj","guj",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/guj.traineddata"))
+        languages.add(Language(	"Creole","Haitian, Haitian Creole","Kreyòl ayisyen","ht","hat","hat","hat",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/hat.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Hausa","(Hausa) هَوُسَ","ha","hau","hau","hau","",""))
+        languages.add(Language(	"Afro-Asiatic","Hebrew","עברית","he","heb","heb","heb",
+            "Modern Hebrew. Code changed in 1989 from original ISO 639:1988, iw.[1]","https://github.com/tesseract-ocr/tessdata/raw/master/heb.traineddata"))
+        languages.add(Language(	"Niger–Congo","Herero","Otjiherero","hz","her","her","her","",""))
+        languages.add(Language(	"Indo-European","Hindi","हिन्दी, हिंदी","hi","hin","hin","hin",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/hin.traineddata"))
+        languages.add(Language(	"Austronesian","Hiri Motu","Hiri Motu","ho","hmo","hmo","hmo","",""))
+        languages.add(Language(	"Uralic","Hungarian","magyar","hu","hun","hun","hun",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/hun.traineddata"))
+        languages.add(Language(	"Indo-European","Icelandic","Íslenska","is","isl","ice","isl",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/isl.traineddata"))
+        languages.add(Language(	"Constructed","Ido","Ido","io","ido","ido","ido",
+            "constructed by De Beaufront, 1907, as variation of Esperanto",""))
+        languages.add(Language(	"Niger–Congo","Igbo","Asụsụ Igbo","ig","ibo","ibo","ibo","",""))
+        languages.add(Language(	"Austronesian","Indonesian","Bahasa Indonesia","id","ind","ind","ind",
+            "Covered by macrolanguage ms/msa. Changed in 1989 from original ISO 639:1988, in.[1]","https://github.com/tesseract-ocr/tessdata/raw/master/ind.traineddata"))
+        languages.add(Language(	"Constructed","Interlingua (International Auxiliary Language Association)","Interlingua","ia","ina","ina","ina",
+            "constructed by International Auxiliary Language Association",""))
+        languages.add(Language(	"Constructed","Interlingue, Occidental","(originally:) Occidental, (after WWII:) Interlingue","ie","ile","ile","ile",
+            "constructed by Edgar de Wahl, first published in 1922",""))
+        languages.add(Language(	"Eskimo–Aleut","Inuktitut","ᐃᓄᒃᑎᑐᑦ","iu","iku","iku","iku + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/iku.traineddata"))
+        languages.add(Language(	"Eskimo–Aleut","Inupiaq","Iñupiaq, Iñupiatun","ik","ipk","ipk","ipk + 2","macrolanguage",""))
+        languages.add(Language(	"Indo-European","Irish","Gaeilge","ga","gle","gle","gle",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/gle.traineddata"))
+        languages.add(Language(	"Indo-European","Italian","Italiano","it","ita","ita","ita",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/ita.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/ita_old.traineddata"))
+        languages.add(Language(	"Japonic","Japanese","日本語 (にほんご)","ja","jpn","jpn","jpn",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/jpn.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/jpn_vert.traineddata"))
+        languages.add(Language(	"Austronesian","Javanese","ꦧꦱꦗꦮ, Basa Jawa","jv","jav","jav","jav",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/jav.traineddata"))
+        languages.add(Language(	"Eskimo–Aleut","Kalaallisut, Greenlandic","kalaallisut, kalaallit oqaasii","kl","kal","kal","kal","",""))
+        languages.add(Language(	"Dravidian","Kannada","ಕನ್ನಡ","kn","kan","kan","kan",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/kan.traineddata"))
+        languages.add(Language(	"Nilo-Saharan","Kanuri","Kanuri","kr","kau","kau","kau + 3","macrolanguage",""))
+        languages.add(Language(	"Indo-European","Kashmiri","कश्मीरी, كشميري‎","ks","kas","kas","kas","",""))
+        languages.add(Language(	"Turkic","Kazakh","қазақ тілі","kk","kaz","kaz","kaz",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/kaz.traineddata"))
+        languages.add(Language(	"Niger–Congo","Kikuyu, Gikuyu","Gĩkũyũ","ki","kik","kik","kik","",""))
+        languages.add(Language(	"Niger–Congo","Kinyarwanda","Ikinyarwanda","rw","kin","kin","kin","",""))
+        languages.add(Language(	"Turkic","Kirghiz, Kyrgyz","Кыргызча, Кыргыз тили","ky","kir","kir","kir",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/kir.traineddata"))
+        languages.add(Language(	"Uralic","Komi","коми кыв","kv","kom","kom","kom + 2","macrolanguage",""))
+        languages.add(Language(	"Niger–Congo","Kongo","Kikongo","kg","kon","kon","kon + 3","macrolanguage",""))
+        languages.add(Language(	"Koreanic","Korean","한국어","ko","kor","kor","kor",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/kor.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/kor_vert.traineddata"))
+        languages.add(Language(	"Niger–Congo","Kuanyama, Kwanyama","Kuanyama","kj","kua","kua","kua","",""))
+        languages.add(Language(	"Indo-European","Kurdish","Kurdî, کوردی‎","ku","kur","kur","kur + 3",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/kmr.traineddata"))
+        languages.add(Language(	"Tai–Kadai","Lao","ພາສາລາວ","lo","lao","lao","lao",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/lao.traineddata"))
+        languages.add(Language(	"Indo-European","Latin","latine, lingua latina","la","lat","lat","lat",
+            "ancient","https://github.com/tesseract-ocr/tessdata/raw/master/lat.traineddata"))
+        languages.add(Language(	"Indo-European","Latvian","latviešu valoda","lv","lav","lav","lav + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/lav.traineddata"))
+        languages.add(Language(	"Indo-European","Limburgan, Limburger, Limburgish","Limburgs","li","lim","lim","lim","",""))
+        languages.add(Language(	"Niger–Congo","Lingala","Lingála","ln","lin","lin","lin","",""))
+        languages.add(Language(	"Indo-European","Lithuanian","lietuvių kalba","lt","lit","lit","lit",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/lit.traineddata"))
+        languages.add(Language(	"Niger–Congo","Luba-Katanga","Kiluba","lu","lub","lub","lub","also known as Luba-Shaba",""))
+        languages.add(Language(	"Indo-European","Luxembourgish, Letzeburgesch","Lëtzebuergesch","lb","ltz","ltz","ltz",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/ltz.traineddata"))
+        languages.add(Language(	"Indo-European","Macedonian","македонски јазик","mk","mkd","mac","mkd",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/mkd.traineddata"))
+        languages.add(Language(	"Austronesian","Malagasy","fiteny malagasy","mg","mlg","mlg","mlg + 11","macrolanguage",""))
+        languages.add(Language(	"Austronesian","Malay","Bahasa Melayu, بهاس ملايو‎","ms","msa","may","msa + 36",
+            "macrolanguage, Standard Malay is zsm, Indonesian is id/ind","https://github.com/tesseract-ocr/tessdata/raw/master/msa.traineddata"))
+        languages.add(Language(	"Dravidian","Malayalam","മലയാളം","ml","mal","mal","mal",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/mal.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Maltese","Malti","mt","mlt","mlt","mlt",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/mlt.traineddata"))
+        languages.add(Language(	"Indo-European","Manx","Gaelg, Gailck","gv","glv","glv","glv","",""))
+        languages.add(Language(	"Austronesian","Māori","te reo Māori","mi","mri","mao","mri",
+            "also known as Māori","https://github.com/tesseract-ocr/tessdata/raw/master/mri.traineddata"))
+        languages.add(Language(	"Indo-European","Marathi","मराठी","mr","mar","mar","mar",
+            "also known as Marāṭhī","https://github.com/tesseract-ocr/tessdata/raw/master/mar.traineddata"))
+        languages.add(Language(	"Austronesian","Marshallese","Kajin M̧ajeļ","mh","mah","mah","mah","",""))
+        languages.add(Language(	"Mongolic","Mongolian","Монгол хэл","mn","mon","mon","mon + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/mon.traineddata"))
+        languages.add(Language(	"Austronesian","Nauru","Dorerin Naoero","na","nau","nau","nau","also known as Nauruan",""))
+        languages.add(Language(	"Dené–Yeniseian","Navajo, Navaho","Diné bizaad","nv","nav","nav","nav","",""))
+        languages.add(Language(	"Niger–Congo","Ndonga","Owambo","ng","ndo","ndo","ndo","",""))
+        languages.add(Language(	"Indo-European","Nepali","नेपाली","ne","nep","nep","nep + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/nep.traineddata"))
+        languages.add(Language(	"Niger–Congo","North Ndebele","isiNdebele","nd","nde","nde","nde","also known as Northern Ndebele",""))
+        languages.add(Language(	"Uralic","Northern Sami","Davvisámegiella","se","sme","sme","sme","",""))
+        languages.add(Language(	"Indo-European","Norwegian","Norsk","no","nor","nor","nor + 2",
+            "macrolanguage, Bokmål is nb/nob, Nynorsk is nn/nno","https://github.com/tesseract-ocr/tessdata/raw/master/nor.traineddata"))
+        languages.add(Language(	"Indo-European","Norwegian Bokmål","Norsk Bokmål","nb","nob","nob","nob","Covered by macrolanguage no/nor",""))
+        languages.add(Language(	"Indo-European","Norwegian Nynorsk","Norsk Nynorsk","nn","nno","nno","nno","Covered by macrolanguage no/nor",""))
+        languages.add(Language(	"Indo-European","Occitan","occitan, lenga d'òc","oc","oci","oci","oci",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/oci.traineddata"))
+        languages.add(Language(	"Algonquian","Ojibwa","ᐊᓂᔑᓈᐯᒧᐎᓐ","oj","oji","oji","oji + 7",
+            "macrolanguage, also known as Ojibwe",""))
+        languages.add(Language(	"Indo-European","Old Frankish","","fk","frk","frk","frk",
+            "Frankish paganism, Catholic Christianity, Germanic peoples, French people","https://github.com/tesseract-ocr/tessdata/raw/master/frk.traineddata"))
+        languages.add(Language(	"Indo-European","Oriya","ଓଡ଼ିଆ","or","ori","ori","ori + 2",
+            "macrolanguage, also known as Odia","https://github.com/tesseract-ocr/tessdata/raw/master/ori.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Oromo","Afaan Oromoo","om","orm","orm","orm + 4","macrolanguage",""))
+        languages.add(Language(	"Indo-European","Ossetian, Ossetic","ирон æвзаг","os","oss","oss","oss","",""))
+        languages.add(Language(	"Indo-European","Pali","पालि, पाळि","pi","pli","pli","pli","ancient, also known as Pāli",""))
+        languages.add(Language(	"Indo-European","Pashto, Pushto","پښتو","ps","pus","pus","pus + 3",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/pus.traineddata"))
+        languages.add(Language(	"Indo-European","Persian","فارسی","fa","fas","per","fas + 2",
+            "macrolanguage, also known as Farsi","https://github.com/tesseract-ocr/tessdata/raw/master/fas.traineddata"))
+        languages.add(Language(	"Indo-European","Polish","język polski, polszczyzna","pl","pol","pol","pol",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/pol.traineddata"))
+        languages.add(Language(	"Indo-European","Portuguese","Português","pt","por","por","por",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/por.traineddata"))
+        languages.add(Language(	"Indo-European","Punjabi, Panjabi","ਪੰਜਾਬੀ, پنجابی‎","pa","pan","pan","pan",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/pan.traineddata"))
+        languages.add(Language(	"Quechuan","Quechua","Runa Simi, Kichwa","qu","que","que","que + 43",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/que.traineddata"))
+        languages.add(Language(	"Indo-European","Romanian, Moldavian, Moldovan","Română, Moldovenească","ro","ron","rum","ron",
+            "The identifiers mo and mol are deprecated, leaving ro and ron (639-2/T) and rum (639-2/B) the current language identifiers to be used for the variant of the Romanian language also known as Moldavian and Moldovan in English and moldave in French. The identifiers mo and mol will not be assigned to different items, and recordings using these identifiers will not be invalid.","https://github.com/tesseract-ocr/tessdata/raw/master/ron.traineddata"))
+        languages.add(Language(	"Indo-European","Romansh","Rumantsch Grischun","rm","roh","roh","roh","",""))
+        languages.add(Language(	"Niger–Congo","Rundi","Ikirundi","rn","run","run","run","also known as Kirundi",""))
+        languages.add(Language(	"Indo-European","Russian","русский","ru","rus","rus","rus",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/rus.traineddata"))
+        languages.add(Language(	"Austronesian","Samoan","gagana fa'a Samoa","sm","smo","smo","smo","",""))
+        languages.add(Language(	"Creole","Sango","yângâ tî sängö","sg","sag","sag","sag","",""))
+        languages.add(Language(	"Indo-European","Sanskrit","संस्कृतम्, संस्कृत","sa","san","san","san",
+            "ancient","https://github.com/tesseract-ocr/tessdata/raw/master/san.traineddata"))
+        languages.add(Language(	"Indo-European","Sardinian","sardu","sc","srd","srd","srd + 4","macrolanguage",""))
+        languages.add(Language(	"Indo-European","Serbian","српски језик","sr","srp","srp","srp",
+            "The ISO 639-2/T code srp deprecated the ISO 639-2/B code scc[2]","https://github.com/tesseract-ocr/tessdata/raw/master/srp.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/srp_latn.traineddata"))
+        languages.add(Language(	"Niger–Congo","Shona","chiShona","sn","sna","sna","sna","",""))
+        languages.add(Language(	"Sino-Tibetan","Sichuan Yi, Nuosu","ꆈꌠ꒿ Nuosuhxop","ii","iii","iii","iii","Standard form of Yi languages",""))
+        languages.add(Language(	"Indo-European","Sindhi","सिन्धी, سنڌي، سندھی‎","sd","snd","snd","snd",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/snd.traineddata"))
+        languages.add(Language(	"Indo-European","Sinhala, Sinhalese","සිංහල","si","sin","sin","sin",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/sin.traineddata"))
+        languages.add(Language(	"Indo-European","Slovak", "Slovenčina, Slovenský jazyk","sk","slk","slo","slk",
+            "", "https://github.com/tesseract-ocr/tessdata/raw/master/slk.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/slk_frak.traineddata"))
+        languages.add(Language(	"Indo-European","Slovenian","Slovenski jezik, Slovenščina","sl","slv","slv","slv",
+            "also known as Slovene","https://github.com/tesseract-ocr/tessdata/raw/master/slv.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Somali","Soomaaliga, af Soomaali","so","som","som","som","",""))
+        languages.add(Language(	"Niger–Congo","South Ndebele","isiNdebele","nr","nbl","nbl","nbl","also known as Southern Ndebele",""))
+        languages.add(Language(	"Niger–Congo","Southern Sotho","Sesotho","st","sot","sot","sot","",""))
+        languages.add(Language(	"Indo-European","Spanish, Castilian","Español","es","spa","spa","spa",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/spa.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/spa_old.traineddata"))
+        languages.add(Language(	"Austronesian","Sundanese","Basa Sunda","su","sun","sun","sun",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/sun.traineddata"))
+        languages.add(Language(	"Niger–Congo","Swahili","Kiswahili","sw","swa","swa","swa + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/swa.traineddata"))
+        languages.add(Language(	"Niger–Congo","Swati","SiSwati","ss","ssw","ssw","ssw","also known as Swazi",""))
+        languages.add(Language(	"Indo-European","Swedish","Svenska","sv","swe","swe","swe",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/swe.traineddata"))
+        languages.add(Language(	"","Syriac","Syriac","","syr","syr","syr",
+            " Macrolanguage, Assyrian Neo-Aramaic,  Chaldean Neo-Aramaic","https://github.com/tesseract-ocr/tessdata/raw/master/syr.traineddata"))
+        languages.add(Language(	"Austronesian","Tagalog","Wikang Tagalog","tl","tgl","tgl","tgl",
+            "Note: Filipino (Pilipino) has the code fil","https://github.com/tesseract-ocr/tessdata/raw/master/tgl.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/ceb.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/fil.traineddata"))
+        languages.add(Language(	"Austronesian","Tahitian","Reo Tahiti","ty","tah","tah","tah",
+            "One of the Reo Mā`ohi (languages of French Polynesia)[3]",""))
+        languages.add(Language(	"Indo-European","Tajik","тоҷикӣ, toçikī, تاجیکی‎","tg","tgk","tgk","tgk",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tgk.traineddata"))
+        languages.add(Language(	"Dravidian","Tamil","தமிழ்","ta","tam","tam","tam",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tam.traineddata"))
+        languages.add(Language(	"Turkic","Tatar","татар теле, tatar tele","tt","tat","tat","tat",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tat.traineddata"))
+        languages.add(Language(	"Dravidian","Telugu","తెలుగు","te","tel","tel","tel",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tel.traineddata"))
+        languages.add(Language(	"Tai–Kadai","Thai","ไทย","th","tha","tha","tha",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tha.traineddata"))
+        languages.add(Language(	"Sino-Tibetan","Tibetan","བོད་ཡིག","bo","bod","tib","bod",
+            "also known as Standard Tibetan","https://github.com/tesseract-ocr/tessdata/raw/master/bod.traineddata"))
+        languages.add(Language(	"Afro-Asiatic","Tigrinya","ትግርኛ","ti","tir","tir","tir",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tir.traineddata"))
+        languages.add(Language(	"Austronesian","Tonga (Tonga Islands)","Faka Tonga","to","ton","ton","ton",
+            "also known as Tongan","https://github.com/tesseract-ocr/tessdata/raw/master/ton.traineddata"))
+        languages.add(Language(	"Niger–Congo","Tsonga","Xitsonga","ts","tso","tso","tso","",""))
+        languages.add(Language(	"Niger–Congo","Tswana","Setswana","tn","tsn","tsn","tsn","",""))
+        languages.add(Language(	"Turkic","Turkish","Türkçe","tr","tur","tur","tur",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/tur.traineddata"))
+        languages.add(Language(	"Turkic","Turkmen","Türkmen, Түркмен","tk","tuk","tuk","tuk","",""))
+        languages.add(Language(	"Niger–Congo","Twi","Twi","tw","twi","twi","twi","Covered by macrolanguage ak/aka",""))
+        languages.add(Language(	"Turkic","Uighur, Uyghur","ئۇيغۇرچە‎, Uyghurche","ug","uig","uig","uig",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/uig.traineddata"))
+        languages.add(Language(	"Indo-European","Ukrainian","Українська","uk","ukr","ukr","ukr",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/ukr.traineddata"))
+        languages.add(Language(	"Indo-European","Urdu","اردو","ur","urd","urd","urd",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/urd.traineddata"))
+        languages.add(Language(	"Turkic","Uzbek","Oʻzbek, Ўзбек, أۇزبېك‎","uz","uzb","uzb","uzb + 2",
+            "macrolanguage","https://github.com/tesseract-ocr/tessdata/raw/master/uzb.traineddata;https://github.com/tesseract-ocr/tessdata/raw/master/uzb_cyrl.traineddata"))
+        languages.add(Language(	"Niger–Congo","Venda","Tshivenḓa","ve","ven","ven","ven","",""))
+        languages.add(Language(	"Austroasiatic","Vietnamese","Tiếng Việt","vi","vie","vie","vie",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/vie.traineddata"))
+        languages.add(Language(	"Constructed","Volapük","Volapük","vo","vol","vol","vol","constructed",""))
+        languages.add(Language(	"Indo-European","Walloon","Walon","wa","wln","wln","wln","",""))
+        languages.add(Language(	"Indo-European","Welsh","Cymraeg","cy","cym","wel","cym",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/cym.traineddata"))
+        languages.add(Language(	"Indo-European","Western Frisian","Frysk","fy","fry","fry","fry",
+            "also known as Frisian","https://github.com/tesseract-ocr/tessdata/raw/master/fry.traineddata"))
+        languages.add(Language(	"Niger–Congo","Wolof","Wollof","wo","wol","wol","wol","",""))
+        languages.add(Language(	"Niger–Congo","Xhosa","isiXhosa","xh","xho","xho","xho","",""))
+        languages.add(Language(	"Indo-European","Yiddish","ייִדיש","yi","yid","yid","yid + 2",
+            "macrolanguage. Changed in 1989 from original ISO 639:1988, ji.[1]","https://github.com/tesseract-ocr/tessdata/raw/master/yid.traineddata"))
+        languages.add(Language(	"Niger–Congo","Yoruba","Yorùbá","yo","yor","yor","yor",
+            "","https://github.com/tesseract-ocr/tessdata/raw/master/yor.traineddata"))
+        languages.add(Language(	"Tai–Kadai","Zhuang, Chuang","Saɯ cueŋƅ, Saw cuengh","za","zha","zha","zha + 16",
+            "macrolanguage",""))
+        languages.add(Language(	"Niger–Congo","Zulu","isiZulu","zu","zul","zul","zul","",""))
+
+
+    }

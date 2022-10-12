@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ctlParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_none"
+    android:orientation="vertical">
+
+    <com.apcc.view.XTextView
+        android:id="@+id/lblLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:textType="small" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_border"
+        android:divider="@drawable/divider_app"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:showDividers="middle|beginning|end">
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnMinus"
+            android:layout_width="@dimen/imageTiny"
+            android:layout_height="@dimen/imageTiny"
+            android:background="@drawable/ic_subtract"
+            android:text=""
+            app:buttonType="icon" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/bg_input"
+            android:padding="@dimen/margin_tiny"
+            tools:text="1.000" />
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnPlus"
+            android:layout_width="@dimen/imageTiny"
+            android:layout_height="@dimen/imageTiny"
+            android:background="@drawable/ic_add"
+            android:text=""
+            app:buttonType="icon" />
+    </LinearLayout>
+
+</LinearLayout>

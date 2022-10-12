@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="action"
+            type="com.apcc.emma.ui.dialog.order.Action" />
+
+        <variable
+            name="viewModel"
+            type="com.apcc.emma.ui.dialog.order.OrderViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dialog">
+
+        <com.apcc.view.XTextView
+            android:id="@+id/lblLabel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight"
+            android:background="@drawable/bg_dialog_header"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingEnd="@dimen/margin_medium"
+            android:text="@string/title_createOrder"
+            android:visibility="@{TextUtils.isEmpty(viewModel.mTitle)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textType="big" />
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnShowList"
+            android:layout_width="@dimen/imageMenu"
+            android:layout_height="@dimen/imageMenu"
+            android:onClick="@{()->action.onPickedDoneClick()}"
+            android:visibility="@{viewModel.mLimitPicked != 1?View.VISIBLE:View.GONE}"
+            app:buttonType="icon"
+            android:background="@drawable/ic_done"
+            app:layout_constraintBottom_toBottomOf="@+id/lblLabel"
+            app:layout_constraintEnd_toStartOf="@+id/btnDone"
+            app:layout_constraintTop_toTopOf="@+id/lblLabel" />
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnDone"
+            android:layout_width="@dimen/imageMenu"
+            android:layout_height="@dimen/imageMenu"
+            android:onClick="@{()->action.onPickedDoneClick()}"
+            android:visibility="@{viewModel.mLimitPicked != 1?View.VISIBLE:View.GONE}"
+            app:buttonType="icon"
+            android:background="@drawable/ic_done"
+            app:layout_constraintBottom_toBottomOf="@+id/lblLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lblLabel" />
+
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="lblLabel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/revOrderPending"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintBottom_toTopOf="@+id/ipNotes"
+            app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/revOrderDetail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintBottom_toTopOf="@+id/ipNotes"
+            app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+        <com.apcc.view.XInput
+            android:id="@+id/ipNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_tiny"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:rightIcon="@drawable/ic_add"
+            app:showLabel="false"
+            android:maxLines="5"
+            android:minLines="3"
+            android:hint="@string/title_note"
+            app:inputMaxLength="large"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

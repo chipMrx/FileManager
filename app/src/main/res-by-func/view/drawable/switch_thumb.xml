@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- OFF時 -->
+    <item android:state_checked="false">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <size
+                        android:height="36dp"
+                        android:width="36dp"
+                        />
+                    <gradient
+                        android:endColor="#00000000"
+                        android:gradientRadius="20dp"
+                        android:startColor="#FF000000"
+                        android:type="radial" />
+                </shape>
+            </item>
+            <item android:bottom="2dp"
+                android:start="0dp"
+                android:end="0dp"
+                android:top="0dp">
+                <shape android:shape="oval" >
+                    <size
+                        android:height="36dp"
+                        android:width="36dp"
+                        />
+                    <solid android:color="#FFFFFF" />
+                    <stroke android:width="4dp"
+                        android:color="@android:color/transparent"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <!-- ON時 -->
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <size
+                        android:height="36dp"
+                        android:width="36dp"
+                        />
+                    <gradient
+                        android:endColor="#00000000"
+                        android:gradientRadius="20dp"
+                        android:startColor="#FF000000"
+                        android:type="radial" />
+                </shape>
+            </item>
+            <item android:bottom="2dp"
+                android:start="0dp"
+                android:end="0dp"
+                android:top="0dp">
+                <shape android:shape="oval" >
+                    <size
+                        android:height="36dp"
+                        android:width="36dp"
+                        />
+                    <solid android:color="#FFFFFF" />
+                    <stroke android:width="4dp"
+                        android:color="@android:color/transparent"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

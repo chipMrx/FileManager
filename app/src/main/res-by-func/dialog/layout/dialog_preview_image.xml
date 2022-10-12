@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="dialog"
+            type="com.apcc.emma.ui.dialog.previewImage.ImagePreviewDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dialog_dark"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.apcc.view.XTextView
+            android:id="@+id/lblLabel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight"
+            android:text="@{dialog.mTitle}"
+            app:textType="big"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingEnd="@dimen/margin_medium"
+            android:background="@drawable/bg_dialog_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="lblLabel"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpSlide"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnDone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/inputFieldHeight"
+            android:drawableEnd="@drawable/ic_done"
+            android:drawableTint="@color/btn_tint"
+            android:onClick="@{()->dialog.viewDone()}"
+            android:text="@string/lbl_done"
+            app:buttonType="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/lblLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lblLabel" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabIndicator"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_medium"
+            app:layout_constraintStart_toStartOf="@+id/vpSlide"
+            app:layout_constraintEnd_toEndOf="@+id/vpSlide"
+            app:layout_constraintBottom_toBottomOf="@+id/vpSlide"
+            app:tabBackground="@drawable/pager_indicator"
+            app:tabGravity="fill"
+            app:tabMaxWidth="@dimen/margin_medium"
+            app:tabIndicatorHeight="0dp"
+            app:tabIndicatorFullWidth="false"
+            android:layout_margin="@dimen/margin_medium" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

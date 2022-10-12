@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ctlParent"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@drawable/btn_none"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.apcc.view.XTextView
+        android:id="@+id/lblLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:textType="small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.apcc.view.XEditText
+        android:id="@+id/edtInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_tiny"
+        android:paddingEnd="@dimen/imageSmall"
+        android:minHeight="@dimen/inputFieldHeight"
+        android:background="@drawable/bg_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblLabel"/>
+
+    <com.apcc.view.XButton
+        android:id="@+id/btnRight"
+        android:layout_width="@dimen/imageTiny"
+        android:layout_height="@dimen/imageTiny"
+        android:background="@drawable/ic_remove_circle"
+        app:buttonType="icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtInput"
+        app:layout_constraintBottom_toBottomOf="@+id/edtInput"
+        android:layout_marginEnd="@dimen/rightImageMargin"
+        android:focusable="false"/>
+
+    <com.apcc.view.XCheckBox
+        android:id="@+id/chkPasswordShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/chk_eye"
+        android:checked="false"
+        android:buttonTint="@color/btn_tint"
+        app:layout_constraintEnd_toStartOf="@+id/btnRight"
+        app:layout_constraintTop_toTopOf="@+id/edtInput"
+        app:layout_constraintBottom_toBottomOf="@+id/edtInput"
+        android:layout_marginEnd="@dimen/rightImageMargin"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

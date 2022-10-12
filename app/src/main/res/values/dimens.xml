@@ -1,0 +1,51 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">220dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+
+    <dimen name="margin_largest">40dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+
+    <dimen name="barHeight">50dp</dimen>
+    <dimen name="rowHeight">45dp</dimen>
+    <dimen name="inputFieldHeight">40dp</dimen>
+    <!-- = (inputFieldHeight - imageTiny)/2 = (40-20)/2 = 10 -->
+    <!-- also using for button height -->
+    <dimen name="rightImageMargin">10dp</dimen>
+
+    <dimen name="logo">250dp</dimen>
+    <dimen name="imageItem">40dp</dimen>
+    <dimen name="imageTiny">24dp</dimen>
+    <dimen name="imageMenu">28dp</dimen>
+    <dimen name="imageSmall">40dp</dimen>
+    <dimen name="imageMedium">100dp</dimen>
+    <dimen name="imageBig">150dp</dimen>
+    <dimen name="tabletFormWidth">450dp</dimen>
+
+
+    <!-- menu column -->
+    <integer name="homeMenuColumn">4</integer>
+    <integer name="dialogWidthPercent">65</integer>
+    <integer name="dialogWidthPercentBig">85</integer>
+
+    <!-- text size -->
+    <dimen name="fontSize_small">14sp</dimen>
+    <dimen name="fontSize_normal">18sp</dimen>
+    <dimen name="fontSize_big">22sp</dimen>
+    <dimen name="fontSize_hug">32sp</dimen>
+
+    <dimen name="fontSize_smallSelected">18sp</dimen>
+    <dimen name="fontSize_normalSelected">22sp</dimen>
+    <dimen name="fontSize_bigSelected">26sp</dimen>
+    <dimen name="fontSize_hugSelected">36sp</dimen>
+    <!-- animation -->
+    <integer name="textAnimatorDuration">200</integer>
+</resources>

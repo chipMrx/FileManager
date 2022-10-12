@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/file_navigation"
+    app:startDestination="@+id/navFolderManager">
+
+    <fragment
+        android:id="@+id/navFolderManager"
+        android:name="com.apcc.emma.ui.file.local.FolderManagerFragment"
+        android:label="@string/title_fileExplorer"
+        tools:layout="@layout/folder_manager_fragment" >
+        <action
+            android:id="@+id/action_manager_to_detail"
+            app:destination="@id/navFileDetail" />
+    </fragment>
+
+    <fragment android:id="@+id/navFileDetail"
+        android:name="com.apcc.emma.ui.file.detail.FileDetailFragment"
+        android:label="@string/title_fileDetail"
+        tools:layout="@layout/file_detail_fragment" >
+        <argument
+            android:name="file"
+            app:argType="com.apcc.data.FileApp"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
+
+
+</navigation>

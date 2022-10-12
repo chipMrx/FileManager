@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.apcc.view.XTextView
+        android:id="@+id/lblLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_gender"
+        app:textType="small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <RadioGroup
+        android:id="@+id/ragGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/inputFieldHeight"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/lblLabel"
+        android:background="@drawable/bg_input"
+        android:gravity="center"
+        android:showDividers="middle"
+        android:divider="@drawable/divider_app">
+        <com.apcc.view.XRadioButton
+            android:id="@+id/rabUnisex"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:button="@drawable/gender_unisex"
+            android:text="@string/gender_unisex"/>
+
+        <com.apcc.view.XRadioButton
+            android:id="@+id/rabMale"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@drawable/gender_male"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:text="@string/gender_male"/>
+
+        <com.apcc.view.XRadioButton
+            android:id="@+id/rabFemale"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@drawable/gender_female"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:text="@string/gender_female"/>
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

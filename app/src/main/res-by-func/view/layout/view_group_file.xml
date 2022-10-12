@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.apcc.view.XTextView
+        android:id="@+id/lblLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:textType="small" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_border"
+        android:padding="@dimen/margin_tiny">
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnAddFile"
+            android:layout_width="@dimen/barHeight"
+            android:layout_height="@dimen/barHeight"
+            android:background="@drawable/btn_add"
+            android:padding="@dimen/margin_tiny"
+            app:buttonType="icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic1"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/btnAddFile"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic2"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic3"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic4"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic5"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic6"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic7"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic6"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic8"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic9"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic10"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic9"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic11"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XIcon
+            android:id="@+id/ic12"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@+id/ic11"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtMore"
+            android:layout_width="@dimen/imageMedium"
+            android:layout_height="@dimen/imageMedium"
+            android:background="@drawable/ic_img"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textType="big_important" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

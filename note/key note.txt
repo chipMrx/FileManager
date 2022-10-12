@@ -1,0 +1,10 @@
+file: emmaKey.jks
+pass: AP@12345678
+alias: keyAlias / AP12345678
+valid: 1000
+name: Tran Ngan
+unit: An Phat CS
+organization: An Phat CS
+city: HCM
+state: 11
+code 70000 

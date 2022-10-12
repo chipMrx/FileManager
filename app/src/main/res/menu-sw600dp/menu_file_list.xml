@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mniCheck"
+        android:icon="@drawable/ic_check"
+        app:showAsAction="ifRoom"
+        android:title="@string/lbl_edit"
+        android:iconTint="@color/menu_tint"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/mniRemove"
+        android:icon="@drawable/ic_remove"
+        app:showAsAction="ifRoom"
+        android:title="@string/lbl_remove"
+        android:iconTint="@color/menu_tint"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/mniCancel"
+        android:icon="@drawable/ic_remove_circle"
+        app:showAsAction="ifRoom"
+        android:title="@string/lbl_cancel"
+        android:iconTint="@color/menu_tint"
+        android:visible="false"/>
+
+    <group
+        android:id="@+id/showGroup"
+        android:menuCategory="container">
+
+
+        <item
+            android:id="@+id/mniLocalFile"
+            android:icon="@drawable/ic_folder"
+            android:title="@string/lbl_viewLocalFile"
+            app:showAsAction="collapseActionView" />
+
+        <item
+            android:id="@+id/mniLinear"
+            android:icon="@drawable/ic_view_list"
+            android:title="@string/lbl_viewDetail"
+            app:showAsAction="collapseActionView" />
+
+        <item
+            android:id="@+id/mniGrid"
+            android:icon="@drawable/ic_view_grid"
+            android:title="@string/lbl_viewGrid"
+            app:showAsAction="collapseActionView" >
+            <menu>
+                <item
+                    android:id="@+id/mniGrid2"
+                    android:title="@string/lbl_viewGrid2"
+                    app:showAsAction="collapseActionView|withText" />
+                <item
+                    android:id="@+id/mniGrid3"
+                    android:title="@string/lbl_viewGrid3"
+                    app:showAsAction="collapseActionView" />
+                <item
+                    android:id="@+id/mniGrid4"
+                    android:title="@string/lbl_viewGrid4"
+                    app:showAsAction="collapseActionView" />
+                <item
+                    android:id="@+id/mniGrid5"
+                    android:title="@string/lbl_viewGrid5"
+                    app:showAsAction="collapseActionView" />
+
+                <item
+                    android:id="@+id/mniGrid6"
+                    android:title="@string/lbl_viewGrid6"
+                    app:showAsAction="collapseActionView" />
+            </menu>
+        </item>
+    </group>
+</menu>

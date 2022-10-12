@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:drawable="@drawable/btn_bg_disable"/>
+    <item android:state_selected="true" android:drawable="@drawable/btn_bg_selected"/>
+    <item android:state_pressed="true" android:drawable="@drawable/btn_bg_selected"/>
+    <item >
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/black_overlayLight"/>
+                    <corners android:radius="@dimen/margin_small" />
+                </shape>
+            </item>
+
+            <item
+                android:left="0dp"
+                android:right="2dp"
+                android:top="0dp"
+                android:bottom="2dp">
+                <shape android:shape="rectangle">
+                    <padding android:right="2dp" android:bottom="2dp"/>
+                    <corners android:radius="@dimen/margin_small"/>
+                    <stroke android:color="@color/colorNormalBorder" android:width="1dp"/>
+                    <solid android:color="@color/colorNormalFill"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

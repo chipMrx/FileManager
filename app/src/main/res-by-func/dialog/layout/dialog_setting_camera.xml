@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="action"
+            type="com.apcc.emma.ui.dialog.setting.Action" />
+
+        <variable
+            name="viewModel"
+            type="com.apcc.emma.ui.dialog.setting.SettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_large"
+        android:background="@drawable/bg_dialog">
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight"
+            android:background="@drawable/bg_dialog_header"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingEnd="@dimen/margin_medium"
+            android:text="@string/title_cameraSetting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textType="big" />
+
+        <com.apcc.view.XButton
+            android:id="@+id/btnDone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/inputFieldHeight"
+            android:drawableEnd="@drawable/ic_done"
+            android:drawableTint="@color/btn_tint"
+            android:onClick="@{()->action.onDoneClick()}"
+            android:text="@string/lbl_done"
+            app:buttonType="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtTitle" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="txtTitle" />
+
+        <!-- content -->
+
+        <com.apcc.view.XCheckBox
+            android:id="@+id/chkAddTimeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:checked="@={viewModel.timeStamp}"
+            android:layout_marginStart="@dimen/margin_small"
+            android:gravity="center_vertical"
+            android:text="@string/lbl_photoTimeStamp"
+            app:layout_constraintTop_toBottomOf="@+id/barrierTop" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtCameraFrame"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:text="@string/lbl_cameraFrame"
+            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintBottom_toBottomOf="@+id/spnCameraFrame"
+            app:layout_constraintEnd_toStartOf="@+id/spnCameraFrame"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnCameraFrame" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spnCameraFrame"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:minHeight="@dimen/rowHeight"
+            android:entries="@array/camera_frames"
+            android:selectedItemPosition="@={viewModel.cameraFrame}"
+            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtCameraFrame"
+            app:layout_constraintTop_toBottomOf="@+id/chkAddTimeLabel" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtCameraQuality"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:text="@string/lbl_pictureQuality"
+            app:layout_constraintBottom_toBottomOf="@+id/spnCameraQuality"
+            app:layout_constraintEnd_toStartOf="@+id/spnCameraQuality"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnCameraQuality"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spnCameraQuality"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:minHeight="@dimen/rowHeight"
+            android:entries="@array/picture_quality"
+            android:selectedItemPosition="@={viewModel.pictureQuality}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtCameraQuality"
+            app:layout_constraintTop_toBottomOf="@+id/spnCameraFrame"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtCameraTimer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            android:paddingStart="@dimen/margin_medium"
+            android:gravity="center_vertical"
+            app:layout_constraintWidth_percent="0.5"
+            android:text="@string/lbl_cameraTimer"
+            app:layout_constraintBottom_toBottomOf="@+id/spnCameraTimer"
+            app:layout_constraintEnd_toStartOf="@+id/spnCameraTimer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnCameraTimer" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spnCameraTimer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:minHeight="@dimen/rowHeight"
+            android:entries="@array/camera_timer"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:selectedItemPosition="@={viewModel.cameraTimer}"
+            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtCameraTimer"
+            app:layout_constraintTop_toBottomOf="@+id/spnCameraQuality" />
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtCameraFlash"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_medium"
+            android:text="@string/lbl_cameraFlash"
+            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintBottom_toBottomOf="@+id/spnCameraFlash"
+            app:layout_constraintEnd_toStartOf="@+id/spnCameraFlash"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnCameraFlash" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spnCameraFlash"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:minHeight="@dimen/rowHeight"
+            android:entries="@array/camera_flash"
+            android:selectedItemPosition="@={viewModel.cameraFlash}"
+            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtCameraFlash"
+            app:layout_constraintTop_toBottomOf="@+id/spnCameraTimer" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

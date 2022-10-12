@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mniEdit"
+        android:icon="@drawable/ic_edit"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/menu_tint"
+        android:title="@string/lbl_edit"
+        android:visible="true"/>
+
+    <item
+        android:id="@+id/mniRemove"
+        android:icon="@drawable/ic_remove"
+        app:showAsAction="ifRoom"
+        android:title="@string/lbl_remove"
+        android:iconTint="@color/menu_tint"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/mniSave"
+        android:icon="@drawable/ic_done"
+        app:showAsAction="ifRoom"
+        android:title="@string/lbl_done"
+        android:iconTint="@color/menu_tint"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/mniCancel"
+        android:icon="@drawable/ic_remove_circle"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/menu_tint"
+        android:title="@string/lbl_cancel"
+        android:visible="false"/>
+
+
+</menu>

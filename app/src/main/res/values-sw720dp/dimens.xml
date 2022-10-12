@@ -1,0 +1,6 @@
+<resources>
+    <!-- menu column -->
+    <integer name="homeMenuColumn">8</integer>
+    <integer name="dialogWidthPercent">35</integer>
+    <integer name="dialogWidthPercentBig">50</integer>
+</resources>

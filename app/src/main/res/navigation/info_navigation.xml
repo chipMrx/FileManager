@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/info_navigation"
+    app:startDestination="@+id/navInfo">
+
+    <fragment
+        android:id="@+id/navInfo"
+        android:name="com.apcc.emma.ui.info.app.InfoFragment"
+        android:label="@string/title_appInfo"
+        tools:layout="@layout/info_fragment" >
+    </fragment>
+
+
+    <fragment android:id="@+id/navTerm"
+        android:name="com.apcc.emma.ui.info.term.TermFragment"
+        android:label="@string/title_term"
+        tools:layout="@layout/term_fragment" >
+    </fragment>
+
+    <fragment android:id="@+id/navLicense"
+        android:name="com.apcc.emma.ui.info.license.LicenseFragment"
+        android:label="@string/title_license"
+        tools:layout="@layout/license_fragment" >
+    </fragment>
+
+</navigation>

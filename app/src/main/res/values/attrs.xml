@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textOnColor" format="color"/>
+    <attr name="textOffColor" format="color"/>
+
+    <attr name="textOnSize" format="dimension"/>
+    <attr name="textOffSize" format="dimension"/>
+
+    <!-- declare attribute -->
+    <attr name="textType" format="integer">
+        <enum name="html" value="0"/>
+        <!--default color is dark gray-->
+        <enum name="normal" value="1"/>
+        <enum name="big" value="2"/>
+        <enum name="huge" value="3"/>
+        <enum name="small" value="4"/>
+        <!--accent color-->
+        <enum name="normal_accent" value="5"/>
+        <enum name="big_accent" value="6"/>
+        <enum name="huge_accent" value="7"/>
+        <enum name="small_accent" value="8"/>
+        <!--success color (green)-->
+        <enum name="normal_success" value="9"/>
+        <enum name="big_success" value="10"/>
+        <enum name="huge_success" value="11"/>
+        <enum name="small_success" value="12"/>
+        <!--important color (blue)-->
+        <enum name="normal_important" value="13"/>
+        <enum name="big_important" value="14"/>
+        <enum name="huge_important" value="15"/>
+        <enum name="small_important" value="16"/>
+        <!--important color (light gray)-->
+        <enum name="normal_disable" value="17"/>
+        <enum name="big_disable" value="18"/>
+        <enum name="huge_disable" value="19"/>
+        <enum name="small_disable" value="20"/>
+    </attr>
+
+    <attr name="formatDateTime" format="string">
+        <enum name="date" value="0"/>
+        <enum name="dateTime" value="1"/>
+        <enum name="dateTimeShort" value="2"/>
+        <enum name="time" value="3"/>
+        <enum name="timeShort" value="4"/>
+    </attr>
+
+    <attr name="imagePath" format="string"/>
+    <attr name="imageDefault" format="reference"/>
+    <attr name="cornerRadius" format="dimension"/>
+    <attr name="allowCache" format="boolean"/>
+
+    <attr name="boldOnState" format="flags">
+        <flag name="none" value="0"/> <!-- no bold -->
+        <flag name="onPressed" value="1"/> <!-- index 0 -->
+        <flag name="onSelected" value="2"/> <!-- index 1 -->
+    </attr>
+    <!---->
+
+    <!-- declare style able -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="XIcon">
+        <attr name="imagePath"/>
+        <attr name="imageDefault"/>
+        <attr name="cornerRadius"/>
+        <attr name="allowCache"/>
+        <attr name="android:tint"/>
+    </declare-styleable>
+
+    <declare-styleable name="XImage">
+        <attr name="imagePath"/>
+        <attr name="imageDefault"/>
+        <attr name="cornerRadius"/>
+        <attr name="allowCache"/>
+        <attr name="android:tint"/>
+    </declare-styleable>
+
+    <declare-styleable name="XTextView">
+        <attr name="textType"/>
+        <attr name="boldOnState"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+    </declare-styleable>
+
+    <declare-styleable name="XCheckBox">
+        <attr name="textType"/>
+        <attr name="android:textColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="XRadioButton">
+        <attr name="textType"/>
+        <attr name="android:textColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="XEditText">
+        <attr name="textType"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="XButton">
+        <!--button type: unset: / normal:orange / success:green / important:blue-->
+        <attr name="buttonType" format="integer">
+            <enum name="unset" value="0"/>
+            <enum name="normal" value="1"/>
+            <enum name="success" value="2"/>
+            <enum name="important" value="3"/>
+            <enum name="icon" value="4"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="XGender">
+        <attr name="gender" format="integer">
+            <enum name="unisex" value="0"/>
+            <enum name="male" value="1"/>
+            <enum name="female" value="2"/>
+        </attr>
+        <attr name="android:label"/>
+        <attr name="android:enabled"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="XInput">
+        <attr name="android:hint"/>
+        <attr name="android:enabled"/>
+        <attr name="showRightImage" format="integer">
+            <enum name="auto" value="0"/>
+            <enum name="alwaysShow" value="1"/>
+            <enum name="alwaysHide" value="2"/>
+        </attr>
+        <attr name="rightIcon" format="reference"/>
+        <attr name="android:selectAllOnFocus"/>
+        <attr name="android:inputType"/>
+        <attr name="android:text"/>
+        <attr name="android:label"/>
+        <attr name="showLabel" format="boolean"/>
+        <attr name="android:maxLines" />
+        <attr name="android:minLines" />
+        <attr name="inputMaxLength" format="integer" >
+            <enum name="id" value="50"/>
+            <enum name="medium" value="100"/>
+            <enum name="large" value="200"/>
+            <enum name="huge" value="1000"/>
+            <enum name="unlimit" value="-1"/>
+        </attr>
+        <attr name="android:imeOptions" />
+        <attr name="android:imeActionLabel" />
+        <attr name="formatDateTime" />
+        <attr name="parentAble" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="XInputNumber">
+        <attr name="android:label"/>
+        <attr name="android:hint"/>
+        <attr name="android:value" />
+        <attr name="increaseStep" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="XProgress">
+        <attr name="android:text"/>
+    </declare-styleable>
+
+    <declare-styleable name="XGroupFile">
+        <attr name="android:enabled"/>
+        <attr name="android:label"/>
+    </declare-styleable>
+
+    <declare-styleable name="XRepeat">
+        <attr name="android:enabled"/>
+        <attr name="repeatType" format="integer">
+            <enum name="None" value="1"/>
+            <enum name="Daily" value="2"/>
+            <enum name="Weekly" value="4"/>
+            <enum name="MonthLy" value="8"/>
+            <enum name="Yearly" value="16"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="XSwitchHorizontal">
+        <attr name="android:thumb"/>
+        <attr name="android:track"/>
+        <attr name="android:textOn"/>
+        <attr name="android:textOff"/>
+        <attr name="android:showText"/>
+        <attr name="android:thumbTextPadding"/>
+        <attr name="android:switchMinWidth"/>
+        <attr name="android:switchPadding"/>
+
+        <attr name="android:textColor"/>
+        <attr name="textOnColor"/>
+        <attr name="textOffColor"/>
+
+        <attr name="textOnSize"/>
+        <attr name="textOffSize"/>
+    </declare-styleable>
+
+    <declare-styleable name="XSwitchVertical">
+        <attr name="android:thumb"/>
+        <attr name="android:track"/>
+        <attr name="android:showText"/>
+        <attr name="android:textColor"/>
+        <attr name="android:thumbTextPadding"/>
+        <attr name="android:switchMinWidth"/>
+        <attr name="android:switchPadding"/>
+
+        <attr name="android:textOn"/>
+        <attr name="android:textOff"/>
+
+        attr name="android:textColor"/>
+        <attr name="textOnColor"/>
+        <attr name="textOffColor"/>
+
+        <attr name="textOnSize"/>
+        <attr name="textOffSize"/>
+    </declare-styleable>
+</resources>

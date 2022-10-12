@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="dialog"
+            type="com.apcc.emma.ui.dialog.common.ConfirmDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:paddingBottom="@dimen/margin_medium">
+
+        <com.apcc.view.XTextView
+            android:id="@+id/txtTitle"
+            style="@style/Dialog_title"
+            android:text="@={dialog.titleField}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="txtTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_largest"
+            app:layout_constraintTop_toBottomOf="@+id/barrierTitle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:divider="@drawable/divider_app"
+                android:showDividers="middle"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="@dimen/margin_medium">
+                <com.apcc.view.XTextView
+                    android:id="@+id/txtInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={dialog.contentField}"
+                    android:textIsSelectable="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:divider="@drawable/divider_app"
+                    android:showDividers="middle"
+                    android:gravity="end">
+
+                    <com.apcc.view.XButton
+                        android:id="@+id/btnCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/inputFieldHeight"
+                        android:visibility="@{TextUtils.isEmpty(dialog.btnDenyField)?View.GONE:View.VISIBLE}"
+                        app:buttonType="normal"
+                        android:text="@{dialog.btnDenyField}"
+                        android:onClick="@{()->dialog.confirmDeny()}"/>
+
+                    <com.apcc.view.XButton
+                        android:id="@+id/btnDone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/inputFieldHeight"
+                        app:buttonType="normal"
+                        android:visibility="@{TextUtils.isEmpty(dialog.btnOkField)?View.GONE:View.VISIBLE}"
+                        android:text="@{dialog.btnOkField}"
+                        android:onClick="@{()->dialog.confirmOk()}"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
